@@ -23,6 +23,9 @@ Parameters:
   LambdaLayerArn:
     Type: String
     Description: The ARN for the Lambda Layer you will use.
+    
+Conditions:
+  HasLambdaLayer: !Not [!Equals [!Ref LambdaLayerArn, ""]]
 
 Resources:
   LambdaInvokePermission:
@@ -79,7 +82,7 @@ Resources:
       Timeout: 300
       CodeUri: ./iam-role-last-used
       Layers:
-      - !Ref LambdaLayerArn
+      - !If [HasLambdaLayer, !Ref LambdaLayerArn, !Ref AWS::NoValue]
 
   LambdaLogGroup:
     Type: 'AWS::Logs::LogGroup'

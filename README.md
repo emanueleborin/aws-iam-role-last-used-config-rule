@@ -11,11 +11,11 @@ Housekeeping:
 
 - S3 bucket where to save the zip function code package (the name, not the ARN):
 
-        MY_S3_BUCKET_NAME=<my bucket name>
+        MY_S3_BUCKET_NAME=<MY S3 BUCKET NAME>
         
 - Lamda layer ARN (optional):
 
-        MY_LAMBDA_LAYER_ARN=""
+        MY_LAMBDA_LAYER_ARN=<MY LAMBDA LAYER ARN>
         
 Package function code and tranform the template to point to zipped code on S3:
 
