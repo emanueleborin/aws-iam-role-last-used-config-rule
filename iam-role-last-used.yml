@@ -81,8 +81,7 @@ Resources:
       Runtime: python3.7
       Timeout: 300
       CodeUri: ./iam-role-last-used
-      Layers:
-      - !If [HasLambdaLayer, !Ref LambdaLayerArn, !Ref AWS::NoValue]
+      Layers: !If [HasLambdaLayer, !Split [",", !Ref LambdaLayerArn], [!Ref AWS::NoValue]]
 
   LambdaLogGroup:
     Type: 'AWS::Logs::LogGroup'
