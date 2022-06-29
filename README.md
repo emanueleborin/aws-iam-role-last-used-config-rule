@@ -21,7 +21,7 @@ Delete previous deployment:
 
     aws cloudformation delete-stack --stack-name iam-role-last-used
         
-Package function code and tranform the template to point to zipped code on S3:
+Package function code and transform the template to point to zipped code on S3:
 
     aws cloudformation package --region $MY_AWS_REGION --template-file iam-role-last-used.yml \
     --s3-bucket $MY_AWS_S3_BUCKET_NAME \
