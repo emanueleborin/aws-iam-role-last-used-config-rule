@@ -5,7 +5,7 @@ See: https://aws.amazon.com/blogs/security/continuously-monitor-unused-iam-roles
 
 Housekeeping:
 
-- Target region (in this example current region):
+- Target region (in this example is the current region):
         
         MY_AWS_REGION=$(curl http://169.254.169.254/latest/meta-data/placement/availability-zone | sed 's/.$//')
 
@@ -13,7 +13,7 @@ Housekeeping:
 
         MY_AWS_S3_BUCKET_NAME=<MY S3 BUCKET NAME>
         
-- Lamda layer ARN (optional):
+- Lambda layer ARN(s) (optional):
 
         MY_AWS_LAMBDA_LAYER_ARNS=<MY COMMA SEPARATED LAMBDA LAYER ARNS>
 
@@ -27,7 +27,7 @@ Package function code and tranform the template to point to zipped code on S3:
     --s3-bucket $MY_AWS_S3_BUCKET_NAME \
     --output-template-file iam-role-last-used-transformed.yml
 
-Peploy lambda function:
+Peploy the lambda function:
 
     aws cloudformation deploy --region $MY_AWS_REGION --template-file iam-role-last-used-transformed.yml \
     --stack-name iam-role-last-used \
